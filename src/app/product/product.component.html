@@ -1,0 +1,29 @@
+<p>product works!</p>
+
+<input type="number" [(ngModel)]="priceMax"> {{alert}}
+<table class="table" border="1">
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>like</th>
+        <th>action</th>
+    </tr>
+    <tr *ngFor="let p of listProduct, let i=index">
+        <ng-container *ngIf="p.price>priceMax || priceMax==null">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.quantity}}</td>
+            <td>{{p.like}}</td>
+            <td><button class="btn btn-info" (click)="increment(i)">like</button></td>
+            <td><button class="btn btn-danger" (click)="buy(i)" [disabled]="p.quantity==0">buy</button></td>
+            <td><button class="btn btn-primary" [routerLink]="['/product',p.id]">Detail</button></td>
+            <td>
+                <button (click)="delete(p.id)">delete</button>
+              </td>
+              <td><button class="btn btn-primary" [routerLink]="['/updateP',p.id]">update</button></td>
+        </ng-container>
+    </tr>
+</table>

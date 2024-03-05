@@ -1,0 +1,26 @@
+<input type="text" [(ngModel)]="surface">
+<table class="table" border="1">
+    <tr>
+
+        <th>AppartNum</th>
+        <th>FloorNum</th>
+        <th>Surface</th>
+        <th>Terrace</th>
+        <th>categorie</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let a of list">
+        <ng-container *ngIf="a.surface==surface || surface==null">
+            <td>{{a.appartNum}}</td>
+            <td>{{a.floorNum}}</td>
+            <td>{{a.surface}}</td>
+            <td>{{a.terrace}}</td>
+            <td>{{a.category}}</td>
+            <td><button (click)="fav(a.id)">Like</button></td>
+        </ng-container>
+    </tr>
+</table>
+
+<ng-container *ngIf="list.length==0">
+    No Appartements
+</ng-container>

@@ -1,0 +1,21 @@
+<p>formControl</p>
+
+<label>Login</label>
+<input type="text" [formControl]="login">
+
+<label>password</label>
+<input type="text" [formControl]="pwd">
+
+<input type="submit" value="save" (click)="save()" [disabled]="login.invalid ||pwd.invalid">
+
+<p>FormGroup!</p>
+
+<form [formGroup]="Form">
+    <label>Login</label>
+    <input type="text" formControlName="login">
+
+    <label>password</label>
+    <input type="text" formControlName="pwd">
+
+    <input type="submit" value="save" (click)="save()" [disabled]="Form.invalid">
+</form>
